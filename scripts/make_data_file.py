@@ -20,6 +20,7 @@ process up a little.
 '''
 
 path = sys.argv[1]
+outpath = sys.argv[2]
 
 if not os.path.isfile(path):
 	quit('Need to specify a file to read from')
@@ -41,7 +42,7 @@ with open(path + '.data_pkl', 'w') as fid:
 
 
 
-FP_len = 1024
+FP_len = 2048
 FP_rad = 2
 def mol_to_fp(mol, radius=FP_rad, nBits=FP_len, convFunc=sparse.lil_matrix):
     if mol is None:
@@ -70,5 +71,5 @@ for lst in chunks(range(len(data)), 50000): # 50k chunks
 # Convert to csr
 FPs = FPs.tocsr()
 
-with open(path + '.fp_pkl', 'w') as fid:
+with open(outpath, 'w') as fid:
     pickle.dump(FPs, fid)
