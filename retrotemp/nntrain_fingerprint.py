@@ -16,11 +16,8 @@ project_root = os.path.dirname(os.path.dirname(__file__))
 NK = 100
 NK0 = 10
 report_interval = 10
-max_save = 20
+max_save = 10
 min_iterations = 1000
-
-score_scale = 5.0
-min_separation = 0.25
 
 FP_len = 1024
 FP_rad = 2
@@ -28,6 +25,8 @@ FP_rad = 2
 parser = OptionParser()
 parser.add_option("-t", "--train", dest="train_path", default=os.path.join(project_root, 'data', 'reaxys_limit10.txt'))
 parser.add_option("-m", "--save_dir", dest="save_path", default=os.path.join(project_root, 'models', 'example_model'))
+parser.add_option("-f", "--fp_suffix", dest="fp_suffix", default="_fp.pkl")
+parser.add_option("--fp_length", dest="fp_length", default=1024)
 parser.add_option("-b", "--batch", dest="batch_size", default=1024)
 parser.add_option("-w", "--hidden", dest="hidden_size", default=300)
 parser.add_option("-o", "--out", dest="output_size", default=61142)
@@ -50,6 +49,8 @@ save_interval = int(opts.save_interval)
 verbose_test = bool(opts.verbose_test)
 interactive_mode = bool(opts.interactive)
 output_size = int(opts.output_size)
+fp_suffix = opts.fp_suffix
+FP_len = int(opts.fp_length)
 
 if interactive_mode:
     batch_size = 2 # keep it small
@@ -114,7 +115,7 @@ with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
         with open(path + '.data_pkl', 'r') as f:
             data = pickle.load(f)
         print('Loading fingerprint file')
-        with open(path + '.fp_pkl', 'r') as f:
+        with open(path + fp_suffix, 'r') as f:
             FPs = pickle.load(f)
 
         data_len = len(data)
@@ -175,7 +176,7 @@ with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
             print('loading data')
             data = pickle.load(f)
                 
-        with open(path + '.fp_pkl', 'r') as f:
+        with open(path + fp_suffix, 'r') as f:
             print('loading sparse FP file')
             FPs = pickle.load(f)
 
@@ -236,7 +237,7 @@ with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
     [t.start() for t in all_threads]
 
     if not interactive_mode:
-        print('Reading data file to figugre out data length')
+        print('Reading data file to figure out data length')
         with open(opts.train_path + '.data_pkl', 'r') as f:
             data_len = len(pickle.load(f))
 
