@@ -23,22 +23,13 @@ batch_size = 1
 NK=100
 
 
-def mol_to_fp(mol, radius=FP_rad, nBits=FP_len):
-    if mol is None:
-        return np.zeros((nBits,), dtype=np.float32)
-    return np.array(AllChem.GetMorganFingerprintAsBitVect(mol, radius, nBits=nBits, 
-        useChirality=True), dtype=np.bool)
-
-def smi_to_fp(smi, radius=FP_rad, nBits=FP_len):
-    if not smi:
-        return np.zeros((nBits,), dtype=np.float32)
-    return mol_to_fp(Chem.MolFromSmiles(smi), radius, nBits)
-
 class RetroTempPrioritizer():
     def __init__(self):
         self.session = tf.Session()
 
-    def build(self, depth=5, hidden_size=300, output_size=163723):
+
+    def build(self, depth=5, hidden_size=300, FP_len=FP_len, output_size=61142):
+        self.FP_len = FP_len
         self.input_mol = tf.placeholder(tf.float32, [batch_size, FP_len])
         self.mol_hiddens = tf.nn.relu(linearND(self.input_mol, hidden_size, scope="encoder0"))
         for d in xrange(1, depth):
@@ -62,6 +53,17 @@ class RetroTempPrioritizer():
         print('Restored values from latest saved file ({})'.format(restore_path))
         return self 
 
+    def mol_to_fp(self, mol, radius=FP_rad):
+            if mol is None:
+                return np.zeros((nBits,), dtype=np.float32)
+            return np.array(AllChem.GetMorganFingerprintAsBitVect(mol, radius, nBits=self.FP_len, 
+                useChirality=True), dtype=np.bool)
+
+    def smi_to_fp(self, smi):
+        if not smi:
+            return np.zeros((self.FP_len,), dtype=np.float32)
+        return self.mol_to_fp(self, Chem.MolFromSmiles(smi))
+
     def get_topk_from_smi(self, smi=''):
         if not smi:
             return []
@@ -71,7 +73,8 @@ class RetroTempPrioritizer():
         return self.get_topk_from_mol(mol)
         
     def get_topk_from_mol(self, mol):
-        fp = mol_to_fp(mol).astype(np.float32).reshape((1, FP_len))
+
+        fp = self.mol_to_fp(mol).astype(np.float32).reshape((1, self.FP_len))
         cur_topk, = self.session.run([self.topk], feed_dict={
             self.input_mol: fp,
         })
@@ -97,10 +100,12 @@ if __name__ == '__main__':
     model.build()
     
     model.restore(os.path.join(project_root, 'models', '6d3M_Reaxys_10_5'), 'ckpt-92820')
+
     smis = ['CCCOCCC', 'CCCNc1ccccc1']
     for smi in smis:
         lst = model.get_topk_from_smi(smi)
         print('{} -> {}'.format(smi, lst))
+
     model.dump_to_numpy_arrays(os.path.join(project_root, 'models', '6d3M_Reaxys_10_5', 'model.ckpt-92820.as_numpy.pickle'))
     
     model.load_from_numpy_arrays(os.path.join(project_root, 'models', '6d3M_Reaxys_10_5', 'model.ckpt-92820.as_numpy.pickle'))
@@ -108,3 +113,4 @@ if __name__ == '__main__':
     for smi in smis:
         lst = model.get_topk_from_smi(smi)
         print('{} -> {}'.format(smi, lst))
+

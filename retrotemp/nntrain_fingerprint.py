@@ -22,6 +22,8 @@ min_iterations = 1000
 parser = OptionParser()
 parser.add_option("-t", "--train", dest="train_path", default=os.path.join(project_root, 'data', 'reaxys_limit10.txt'))
 parser.add_option("-m", "--save_dir", dest="save_path", default=os.path.join(project_root, 'models', 'example_model'))
+parser.add_option("-f", "--fp_suffix", dest="fp_suffix", default="_fp.pkl")
+parser.add_option("--fp_length", dest="fp_length", default=1024)
 parser.add_option("-b", "--batch", dest="batch_size", default=1024)
 parser.add_option("-w", "--hidden", dest="hidden_size", default=300)
 parser.add_option("-o", "--out", dest="output_size", default=61142)
@@ -53,6 +55,7 @@ max_save = 20 if not fixed_epochs_train_all else fixed_epochs_train_all
 
 FP_len = int(opts.fp_len)
 FP_rad = int(opts.fp_rad)
+
 
 if interactive_mode:
     batch_size = 2 # keep it small
@@ -184,6 +187,7 @@ with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
 
         data_len = len(data)
         print('%i total data entries' % data_len)
+
         if not fixed_epochs_train_all:
             print('...slicing data')
             data = data[:int(0.8 * data_len)]  
@@ -192,6 +196,7 @@ with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
             print('Taking 0.8 for training (%i)' % data_len)
         else:
             print('Using WHOLE DATA for fixed number of epochs')
+
         
         it = 0; 
         src_mols = np.zeros((batch_size, FP_len), dtype=np.float32)
@@ -241,7 +246,8 @@ with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
     [t.start() for t in all_threads]
 
     if not interactive_mode:
-        print('Reading data file to figugre out data length')
+        print('Reading data file to figure out data length')
+
         with open(opts.train_path + '.data_pkl', 'r') as f:
             data_len = len(pickle.load(f))
 
@@ -344,6 +350,7 @@ with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as session:
             while queue.qsize() == 0:
                 print('Letting queue fill up (10 s...)')
                 time.sleep(10)
+
 
             summarystring = ''
             ctr = 0.0

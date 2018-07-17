@@ -70,5 +70,6 @@ for lst in chunks(range(len(data)), 50000): # 50k chunks
 # Convert to csr
 FPs = FPs.tocsr()
 
+
 with open(path + '.fp_pkl', 'w') as fid:
     pickle.dump(FPs, fid)

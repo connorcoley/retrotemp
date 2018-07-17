@@ -1,0 +1,10 @@
+Cc1ccc(S(=O)(=O)OC[C@H]2OCO[C@H]3[C@@H]2OCO[C@H]3COS(=O)(=O)c2ccc(C)cc2)cc1>>Cc1ccc(S(=O)(=O)OC[C@@H]2OCO[C@@H]3[C@@H](CI)OCO[C@@H]32)cc1 34 736 1472 59c5117205581eb9f5752d53
+S=C(Nc1ccc2ccccc2c1)Nc1ccc2ccccc2c1>>C(=Nc1ccc2ccccc2c1)=Nc1ccc2ccccc2c1 24 756 12143 59c5117205581eb9f5752d57
+S=C(Nc1ccc2ccccc2c1)Nc1ccc2ccccc2c1>>N=C(Nc1ccc2ccccc2c1)Nc1ccc2ccccc2c1 24 761 4198 59c5117205581eb9f5752d56
+CC(=O)OC[C@H]1O[C@@H](n2cc(-c3ccccc3)nn2)[C@H](OC(C)=O)[C@@H](OC(C)=O)[C@@H]1OC(C)=O>>OC[C@H]1O[C@@H](n2cc(-c3ccccc3)nn2)[C@H](O)[C@@H](O)[C@@H]1O 34 763 187 59c5117205581eb9f5752d5c
+CCOC(=O)/C=C/C=C(C)c1cccs1>>CC(=C/C=C/C(=O)O)c1cccs1 15 764 189 59c5117205581eb9f5752d52
+CC(=O)OCC(=O)[C@@]12OC(C)(C)O[C@@H]1C[C@H]1[C@@H]3C[C@H](Cl)C4=CC(=O)CC[C@]4(C)[C@@]3(F)[C@@H](O)C[C@@]12C>>CC(=O)OCC(=O)[C@@]12OC(C)(C)O[C@@H]1C[C@H]1[C@@H]3C[C@H](Cl)C4=CC(=O)C=C[C@]4(C)[C@@]3(F)[C@@H](O)C[C@@]12C 35 765 1292 59c5117205581eb9f5752d5a
+CC(=O)OC[C@H]1O[C@@H](Oc2cccc([N+](=O)[O-])c2)[C@H](OC(C)=O)[C@@H](OC(C)=O)[C@@H]1OC(C)=O>>O=[N+]([O-])c1cccc(O[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)c1 33 775 9016 59c5117205581eb9f5752d5f
+CC1(C)O[C@@H]2[C@@H](CO)OC(=O)[C@@H]2O1.Cc1ccc(S(=O)(=O)Cl)cc1>>Cc1ccc(S(=O)(=O)OC[C@H]2OC(=O)[C@@H]3OC(C)(C)O[C@H]23)cc1 24 776 11 59c5117205581eb9f5752d61
+CC1(C)O[C@@H]2[C@@H](CO)OC(=O)[C@@H]2O1>>COC[C@H]1OC(=O)[C@@H]2OC(C)(C)O[C@H]12 14 777 1729 59c5117205581eb9f5752d5d
+CC(=O)OC[C@H]1O[C@H](Oc2cccc([N+](=O)[O-])c2)[C@H](OC(C)=O)[C@@H](OC(C)=O)[C@@H]1OC(C)=O>>O=[N+]([O-])c1cccc(O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)c1 33 779 9016 59c5117205581eb9f5752d5f

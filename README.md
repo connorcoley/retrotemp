@@ -1,5 +1,9 @@
 # retrotemp
 
+
+Neural network for predicting template relevance a la Segler and Waller's Neural Symbolic paper. 
+
+
 ### Dependencies if you want to use the final model
 - RDKit (most versions should be fine)
 - numpy

@@ -1,0 +1,12 @@
+[ckpt-5283 = valid] [000540879 prods seen], Acc1: 0.353, Acc5: 0.618, Acc10: 0.705, Acc20: 0.776, Acc50: 0.850, Acc100: 0.892, PNorm: 1592.41, GNorm: 0.00, Loss: 3.3909
+[ckpt-10566 = valid] [000540879 prods seen], Acc1: 0.394, Acc5: 0.668, Acc10: 0.752, Acc20: 0.819, Acc50: 0.883, Acc100: 0.918, PNorm: 2033.34, GNorm: 0.00, Loss: 3.0601
+[ckpt-15849 = valid] [000540879 prods seen], Acc1: 0.412, Acc5: 0.686, Acc10: 0.769, Acc20: 0.833, Acc50: 0.894, Acc100: 0.926, PNorm: 2365.79, GNorm: 0.00, Loss: 2.9996
+[ckpt-21132 = valid] [000540879 prods seen], Acc1: 0.416, Acc5: 0.690, Acc10: 0.772, Acc20: 0.836, Acc50: 0.896, Acc100: 0.927, PNorm: 2628.09, GNorm: 0.00, Loss: 2.9188
+[ckpt-26415 = valid] [000540879 prods seen], Acc1: 0.429, Acc5: 0.704, Acc10: 0.784, Acc20: 0.845, Acc50: 0.902, Acc100: 0.932, PNorm: 2839.47, GNorm: 0.00, Loss: 2.9424
+[ckpt-31698 = valid] [000540879 prods seen], Acc1: 0.431, Acc5: 0.706, Acc10: 0.787, Acc20: 0.847, Acc50: 0.903, Acc100: 0.933, PNorm: 3010.43, GNorm: 0.00, Loss: 2.9686
+[ckpt-36981 = valid] [000540879 prods seen], Acc1: 0.437, Acc5: 0.711, Acc10: 0.791, Acc20: 0.850, Acc50: 0.905, Acc100: 0.933, PNorm: 3152.40, GNorm: 0.00, Loss: 3.0110
+[ckpt-42264 = valid] [000540879 prods seen], Acc1: 0.439, Acc5: 0.713, Acc10: 0.791, Acc20: 0.850, Acc50: 0.905, Acc100: 0.932, PNorm: 3273.14, GNorm: 0.00, Loss: 3.0169
+[ckpt-47547 = valid] [000540879 prods seen], Acc1: 0.441, Acc5: 0.714, Acc10: 0.793, Acc20: 0.852, Acc50: 0.906, Acc100: 0.934, PNorm: 3375.88, GNorm: 0.00, Loss: 3.0543
+[ckpt-52830 = valid] [000540879 prods seen], Acc1: 0.442, Acc5: 0.716, Acc10: 0.794, Acc20: 0.853, Acc50: 0.906, Acc100: 0.933, PNorm: 3463.12, GNorm: 0.00, Loss: 3.0559
+[final = valid] [000540879 prods seen], Acc1: 0.444, Acc5: 0.718, Acc10: 0.796, Acc20: 0.854, Acc50: 0.907, Acc100: 0.934, PNorm: 3531.79, GNorm: 0.00, Loss: 3.0616
+[ckpt-47547 = test] [000540879 prods seen], Acc1: 0.442, Acc5: 0.715, Acc10: 0.793, Acc20: 0.852, Acc50: 0.906, Acc100: 0.934, PNorm: 3375.88, GNorm: 0.00, Loss: 3.0551
