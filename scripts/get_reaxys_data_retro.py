@@ -18,7 +18,7 @@ and the document ID for traceability.
 
 limit = 1e9 
 
-db_client = MongoClient('mongodb://guest:guest@askcos2.mit.edu/admin', 27017)
+db_client = MongoClient('mongodb://username:password@server/authenticationdb', 27017)
 reaction_db = db_client['reaxys_v2']['reactions']
 
 RETRO_TRANSFORMS_CHIRAL = {
