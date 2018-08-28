@@ -36,7 +36,7 @@ Learn to predict template relevance.
         fi
     done
     ```
-1. Retrain on whole dataset (?) for same number of epochs
+1. Retrain on whole dataset (?) for same number of epochs. Note: this is because we want a high-performing deployed model and no longer need to hold out any data.
     ```python retrotemp/nntrain_fingerprint.py -t data/reaxys_limit1000000000_reaxys_v2_transforms_retro_v9_10_5.txt -o 163723 -m models/6d3M_Reaxys_10_5 --fp_len 2048 --fixed_epochs_train_all 15```
 
 
